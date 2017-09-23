@@ -1,11 +1,16 @@
 package de.krummacker.hello;
 
-import de.krummacker.cache.HashMapCache;
+import java.util.Arrays;
 
 public class Hello {
 
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-        HashMapCache cache = new HashMapCache(null);
+        ProcessHandle.Info processInfo = ProcessHandle.current().info();
+        System.out.println("Process arguments: " + Arrays.toString(processInfo.arguments().orElse(new String[0])));
+        System.out.println("Process executable: " + processInfo.command().orElse(""));
+        System.out.println("Process command line: " + processInfo.commandLine().orElse(""));
+        System.out.println("Process start time: " + processInfo.startInstant().orElse(null));
+        System.out.println("Process total cputime accumulated: " + processInfo.totalCpuDuration().orElse(null));
+        System.out.println("Process user: " + processInfo.user().orElse(""));
     }
 }
