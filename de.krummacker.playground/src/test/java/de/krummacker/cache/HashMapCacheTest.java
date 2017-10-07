@@ -1,13 +1,13 @@
 package de.krummacker.cache;
 
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.Serializable;
 
-public class HashMapCacheTest {
+class HashMapCacheTest {
 
     /**
      * Dummy implementation so that we can test the HashMapCache class.
@@ -27,13 +27,13 @@ public class HashMapCacheTest {
 
     private Cache<Serializable> cache;
 
-    @BeforeMethod
-    public void setUp() throws Exception {
+    @BeforeEach
+    void setUp() throws Exception {
         cache = new HashMapCache<>(UNDERLYING_CACHE);
     }
 
-    @AfterMethod
-    public void tearDown() throws Exception {
+    @AfterEach
+    void tearDown() throws Exception {
         cache = null;
     }
 
@@ -41,7 +41,7 @@ public class HashMapCacheTest {
      * Make sure that a second get returns the same object as the first get has returned before.
      */
     @Test
-    public void testGet() throws Exception {
+    void testGet() throws Exception {
 
         //noinspection RedundantStringConstructorCall
         String first = new String("id");
@@ -50,14 +50,14 @@ public class HashMapCacheTest {
 
         Serializable firstResult = cache.get(first);
         Serializable secondResult = cache.get(second);
-        Assert.assertTrue(firstResult == secondResult);
+        Assertions.assertTrue(firstResult == secondResult);
     }
 
     /**
      * Make sure that a cached object is forgotten after invalidate.
      */
     @Test
-    public void testInvalidateGet() throws Exception {
+    void testInvalidateGet() throws Exception {
 
         //noinspection RedundantStringConstructorCall
         String first = new String("id");
@@ -65,10 +65,10 @@ public class HashMapCacheTest {
         String second = new String("id");
 
         //noinspection StringEquality
-        Assert.assertTrue(first != second);
+        Assertions.assertTrue(first != second);
         Serializable firstResult = cache.get(first);
         cache.invalidate(first);
         Serializable secondResult = cache.get(second);
-        Assert.assertTrue(firstResult != secondResult);
+        Assertions.assertTrue(firstResult != secondResult);
     }
 }

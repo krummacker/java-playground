@@ -1,9 +1,9 @@
 package de.krummacker.sorter;
 
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,17 +12,17 @@ import java.util.List;
 /**
  * Make this class abstract so that the unit test runner does not start it unintentionally.
  */
-public abstract class SorterBase {
+abstract class SorterBase {
 
     private Sorter<Integer> sorter;
 
-    @BeforeMethod
-    public void setUp() throws Exception {
+    @BeforeEach
+    void setUp() throws Exception {
         sorter = getSorter();
     }
 
-    @AfterMethod
-    public void tearDown() throws Exception {
+    @AfterEach
+    void tearDown() throws Exception {
         sorter = null;
     }
 
@@ -35,37 +35,37 @@ public abstract class SorterBase {
     protected abstract Sorter<Integer> getSorter();
 
     @Test
-    public void testSortHappyCase() throws Exception {
+    void testSortHappyCase() throws Exception {
 
         List<Integer> before = Arrays.asList(2, 4, 7, 9, 3, 5, 1, 8, 6);
         List<Integer> after = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
         List<Integer> result = sorter.sort(before);
-        Assert.assertEquals(result, after);
+        Assertions.assertEquals(result, after);
     }
 
     @Test
-    public void testSortAlreadySorted() throws Exception {
+    void testSortAlreadySorted() throws Exception {
 
         List<Integer> before = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
         List<Integer> after = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
         List<Integer> result = sorter.sort(before);
-        Assert.assertEquals(result, after);
+        Assertions.assertEquals(result, after);
     }
 
     @Test
-    public void testSortEmptyList() throws Exception {
+    void testSortEmptyList() throws Exception {
 
         List<Integer> before = Collections.emptyList();
         List<Integer> after = Collections.emptyList();
 
         List<Integer> result = sorter.sort(before);
-        Assert.assertEquals(result, after);
+        Assertions.assertEquals(result, after);
     }
 
     @Test
-    public void testSortListNull() throws Exception {
+    void testSortListNull() throws Exception {
 
         try {
             sorter.sort(null);
@@ -73,13 +73,13 @@ public abstract class SorterBase {
             // expected
             return;
         } catch (Exception e) {
-            Assert.fail("wrong exception thrown: " + e);
+            Assertions.fail("wrong exception thrown: " + e);
         }
-        Assert.fail("no exception thrown");
+        Assertions.fail("no exception thrown");
     }
 
     @Test
-    public void testSortElementNull() throws Exception {
+    void testSortElementNull() throws Exception {
 
         List<Integer> before = Arrays.asList(2, null, 7);
 
@@ -89,8 +89,8 @@ public abstract class SorterBase {
             // expected
             return;
         } catch (Exception e) {
-            Assert.fail("wrong exception thrown: " + e);
+            Assertions.fail("wrong exception thrown: " + e);
         }
-        Assert.fail("no exception thrown");
+        Assertions.fail("no exception thrown");
     }
 }
