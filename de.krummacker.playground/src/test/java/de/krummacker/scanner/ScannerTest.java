@@ -18,7 +18,7 @@ class ScannerTest {
     @Test
     void testScanner() {
         try {
-            File source = new File("de.krummacker.playground/src/test/java/de/krummacker/scanner/ScannerTest.java");
+            File source = new File("src/test/java/de/krummacker/scanner/ScannerTest.java");
             String str = new Scanner(source, "UTF-8").useDelimiter("\\A").next();
             Assertions.assertNotNull(str);
             Assertions.assertNotEquals(str, "");

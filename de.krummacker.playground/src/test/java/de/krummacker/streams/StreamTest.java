@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 public class StreamTest {
 
     @Test
-    public void testIterateAndLimit() throws Exception {
+    public void testIterateAndLimit() {
         Stream<Integer> stream = Stream.iterate(0, n -> n + 1)
                 .limit(10);
         List<Integer> produced = stream.collect(Collectors.toList());
@@ -22,7 +22,16 @@ public class StreamTest {
     }
 
     @Test
-    public void testSkip() throws Exception {
+    public void testIterateAndLimitAndCollectToSet() {
+        Stream<Integer> stream = Stream.iterate(0, n -> n + 1)
+                .limit(10);
+        Set<Integer> produced = stream.collect(Collectors.toSet());
+        Set<Integer> expected = new HashSet<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+        Assertions.assertEquals(expected, produced);
+    }
+
+    @Test
+    public void testSkip() {
         Stream<Integer> stream = Stream.iterate(0, n -> n + 1)
                 .limit(10)
                 .skip(5);
@@ -32,7 +41,17 @@ public class StreamTest {
     }
 
     @Test
-    public void testMap() throws Exception {
+    public void testFilter() {
+        Stream<Integer> stream = Stream.iterate(0, n -> n + 1)
+                .limit(10)
+                .filter(element -> element % 2 == 0);
+        List<Integer> produced = stream.collect(Collectors.toList());
+        List<Integer> expected = Arrays.asList(0, 2, 4, 6, 8);
+        Assertions.assertEquals(expected, produced);
+    }
+
+    @Test
+    public void testMap() {
         Stream<Integer> stream = Stream.iterate(0, n -> n + 1)
                 .limit(10)
                 .map(n -> n * 2);
@@ -42,12 +61,12 @@ public class StreamTest {
     }
 
     @Test
-    public void testGetItemFromMapElement() throws Exception {
+    public void testGetItemFromMapElement() {
 
         String[] codes = {"EUR", "CZK", "JPY"};
-        List<Map<String, String>> listOfMaps = new ArrayList();
+        List<Map<String, String>> listOfMaps = new ArrayList<>();
         for (String code : codes) {
-            Map<String, String> element = new HashMap();
+            Map<String, String> element = new HashMap<>();
             element.put("code", code);
             listOfMaps.add(element);
         }
