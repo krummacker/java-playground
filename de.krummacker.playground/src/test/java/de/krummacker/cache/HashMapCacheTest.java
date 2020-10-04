@@ -50,6 +50,8 @@ class HashMapCacheTest {
 
         Serializable firstResult = cache.get(first);
         Serializable secondResult = cache.get(second);
+
+        // Intentionally comparing identity, not equality
         Assertions.assertTrue(firstResult == secondResult);
     }
 

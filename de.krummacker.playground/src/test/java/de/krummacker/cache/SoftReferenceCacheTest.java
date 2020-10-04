@@ -10,7 +10,7 @@ import java.io.Serializable;
 class SoftReferenceCacheTest {
 
     /**
-     * Dummy implementation so that we can test the HashMapCache class.
+     * Dummy implementation so that we can test the SoftReferenceCache class.
      */
     private final static Cache<String> UNDERLYING_CACHE = new Cache<String>() {
 
