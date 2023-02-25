@@ -15,7 +15,7 @@ public class DateTest {
     /**
      * There is a leap second between 31 December 1998 23:59:59 UTC and 1 January 1999 00:00:00 UTC. Tests if
      * java.util.Calendar knows this.
-     */
+     *
     @Test
     @Disabled
     // Calendar does not and will not support leap seconds, see http://bugs.java.com/bugdatabase/view_bug.do?bug_id=4272347
@@ -32,7 +32,7 @@ public class DateTest {
         utcCalendar.add(Calendar.SECOND, 1); // add a second
         Assertions.assertEquals(utcCalendar.get(Calendar.SECOND), 60);
         Assertions.assertEquals(utcCalendar.get(Calendar.YEAR), 1998);
-    }
+    }*/
 
     @Test
     public void testFactoryMethod() {

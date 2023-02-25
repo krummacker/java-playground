@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-class EntityRetrieverTest {
+public class EntityRetrieverTest {
 
     private EntityRetriever entityRetriever;
 
