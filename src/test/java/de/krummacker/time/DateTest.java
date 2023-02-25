@@ -1,8 +1,6 @@
 package de.krummacker.time;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.testng.Assert;
 
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -15,10 +13,9 @@ public class DateTest {
     /**
      * There is a leap second between 31 December 1998 23:59:59 UTC and 1 January 1999 00:00:00 UTC. Tests if
      * java.util.Calendar knows this.
-     *
-    @Test
-    @Disabled
-    // Calendar does not and will not support leap seconds, see http://bugs.java.com/bugdatabase/view_bug.do?bug_id=4272347
+     */
+    // @Test Deactivated - Calendar does not and will not support leap seconds
+    // http://bugs.java.com/bugdatabase/view_bug.do?bug_id=4272347
     public void testLeapSecond() {
 
         Calendar utcCalendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
@@ -30,13 +27,7 @@ public class DateTest {
         utcCalendar.set(Calendar.SECOND, 59);
 
         utcCalendar.add(Calendar.SECOND, 1); // add a second
-        Assertions.assertEquals(utcCalendar.get(Calendar.SECOND), 60);
-        Assertions.assertEquals(utcCalendar.get(Calendar.YEAR), 1998);
-    }*/
-
-    @Test
-    public void testFactoryMethod() {
-        Calendar utcCalendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-        Assertions.assertNotNull(utcCalendar);
+        Assert.assertEquals(utcCalendar.get(Calendar.SECOND), 60);
+        Assert.assertEquals(utcCalendar.get(Calendar.YEAR), 1998);
     }
 }

@@ -1,13 +1,13 @@
 package de.krummacker.cache;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.io.Serializable;
 
-class HashMapCacheTest {
+public class HashMapCacheTest {
 
     /**
      * Dummy implementation so that we can test the HashMapCache class.
@@ -27,50 +27,41 @@ class HashMapCacheTest {
 
     private Cache<Serializable> cache;
 
-    @BeforeEach
-    void setUp() throws Exception {
+    @BeforeMethod
+    public void setUp() throws Exception {
         cache = new HashMapCache<>(UNDERLYING_CACHE);
     }
 
-    @AfterEach
-    void tearDown() throws Exception {
+    @AfterMethod
+    public void tearDown() throws Exception {
         cache = null;
     }
 
     /**
-     * Make sure that a second get returns the same object as the first get has returned before.
+     * Make sure that a second get returns then same object as the first get has returned before.
      */
     @Test
-    void testGet() throws Exception {
-
+    public void testGet() throws Exception {
         //noinspection RedundantStringConstructorCall
         String first = new String("id");
-        //noinspection RedundantStringConstructorCall
         String second = new String("id");
-
         Serializable firstResult = cache.get(first);
         Serializable secondResult = cache.get(second);
-
-        // Intentionally comparing identity, not equality
-        Assertions.assertTrue(firstResult == secondResult);
+        Assert.assertTrue(firstResult == secondResult);
     }
 
     /**
      * Make sure that a cached object is forgotten after invalidate.
      */
     @Test
-    void testInvalidateGet() throws Exception {
-
-        //noinspection RedundantStringConstructorCall
+    public void testInvalidateGet() throws Exception {
         String first = new String("id");
-        //noinspection RedundantStringConstructorCall
         String second = new String("id");
-
         //noinspection StringEquality
-        Assertions.assertTrue(first != second);
+        Assert.assertTrue(first != second);
         Serializable firstResult = cache.get(first);
         cache.invalidate(first);
         Serializable secondResult = cache.get(second);
-        Assertions.assertTrue(firstResult != secondResult);
+        Assert.assertTrue(firstResult != secondResult);
     }
 }

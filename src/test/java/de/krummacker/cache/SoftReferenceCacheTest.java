@@ -1,16 +1,16 @@
 package de.krummacker.cache;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.io.Serializable;
 
-class SoftReferenceCacheTest {
+public class SoftReferenceCacheTest {
 
     /**
-     * Dummy implementation so that we can test the SoftReferenceCache class.
+     * Dummy implementation so that we can test the HashMapCache class.
      */
     private final static Cache<String> UNDERLYING_CACHE = new Cache<String>() {
 
@@ -33,13 +33,13 @@ class SoftReferenceCacheTest {
 
     private SoftReferenceCache<String> cache;
 
-    @BeforeEach
-    void setUp() throws Exception {
+    @BeforeMethod
+    public void setUp() throws Exception {
         cache = new SoftReferenceCache<>(UNDERLYING_CACHE);
     }
 
-    @AfterEach
-    void tearDown() throws Exception {
+    @AfterMethod
+    public void tearDown() throws Exception {
         cache = null;
     }
 
@@ -47,7 +47,7 @@ class SoftReferenceCacheTest {
      * Make sure that a second get returns then same object as the first get has returned before.
      */
     @Test
-    void testGet() throws Exception {
+    public void testGet() throws Exception {
 
         // Intentionally creating different String instances
         @SuppressWarnings("RedundantStringConstructorCall") String first = new String("id");
@@ -58,14 +58,14 @@ class SoftReferenceCacheTest {
 
         // Intentionally comparing identity, not equality
         //noinspection StringEquality
-        Assertions.assertTrue(firstResult == secondResult);
+        Assert.assertTrue(firstResult == secondResult);
     }
 
     /**
      * Make sure that a cached object is forgotten after invalidate.
      */
     @Test
-    void testInvalidateGet() throws Exception {
+    public void testInvalidateGet() throws Exception {
 
         // Intentionally creating different String instances
         @SuppressWarnings("RedundantStringConstructorCall") String first = new String("id");
@@ -73,7 +73,7 @@ class SoftReferenceCacheTest {
 
         // Intentionally comparing identity, not equality
         //noinspection StringEquality
-        Assertions.assertTrue(first != second);
+        Assert.assertTrue(first != second);
 
         String firstResult = cache.get(first);
         cache.invalidate(first);
@@ -81,6 +81,6 @@ class SoftReferenceCacheTest {
 
         // Intentionally comparing identity, not equality
         //noinspection StringEquality
-        Assertions.assertTrue(firstResult != secondResult);
+        Assert.assertTrue(firstResult != secondResult);
     }
 }

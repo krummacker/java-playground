@@ -1,13 +1,12 @@
 package de.krummacker.collections;
 
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 /**
  * Tests the Stack class.
  */
-class StackTest {
+public class StackTest {
 
     @Test
     void testPushAndPop() {
@@ -15,13 +14,13 @@ class StackTest {
         String value = "kobylamamalybok";
         stack.push(value);
         String result = stack.pop();
-        Assertions.assertEquals(result, value);
+        Assert.assertEquals(result, value);
     }
 
     @Test
     void testEmptySize() {
         Stack<String> stack = new Stack<>();
-        Assertions.assertEquals(stack.size(), 0);
+        Assert.assertEquals(stack.size(), 0);
     }
 
     @Test
@@ -30,7 +29,7 @@ class StackTest {
         stack.push(1);
         stack.push(2);
         stack.push(3);
-        Assertions.assertEquals(stack.size(), 3);
+        Assert.assertEquals(stack.size(), 3);
     }
 
     @Test
@@ -39,10 +38,10 @@ class StackTest {
         stack.push(1);
         stack.push(2);
         stack.push(3);
-        Assertions.assertEquals(stack.peek(), 3);
-        Assertions.assertEquals(stack.size(), 3);
-        Assertions.assertEquals(stack.pop(), 3);
-        Assertions.assertEquals(stack.pop(), 2);
-        Assertions.assertEquals(stack.pop(), 1);
+        Assert.assertEquals(stack.peek(), 3);
+        Assert.assertEquals(stack.size(), 3);
+        Assert.assertEquals(stack.pop(), 3);
+        Assert.assertEquals(stack.pop(), 2);
+        Assert.assertEquals(stack.pop(), 1);
     }
 }

@@ -1,41 +1,28 @@
 package de.krummacker.autoclosable;
 
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 
-import java.io.IOException;
+public class ResourceTest {
 
-/**
- * Tests the Resource class.
- */
-class ResourceTest {
-
-    /**
-     * Uses the Resource class in the old Java style.
-     */
     @Test
-    void testOldStyle() {
+    public void testOldStyle() {
         Resource resource = null;
         try {
             resource = new Resource();
             resource.someAction();
-        } catch (IOException e) {
-            // do  nothing
+        } catch (Exception e) {
+            ;
         } finally {
-            if (resource != null) {
-                resource.close();
-            }
+            resource.close();
         }
     }
 
-    /**
-     * Uses the Resource class in a try-with-resources block.
-     */
     @Test
-    void testNewStyle() {
+    public void testNewStyle() {
         try (Resource resource = new Resource()) {
             resource.someAction();
-        } catch (IOException e) {
-            // do  nothing
+        } catch (Exception e) {
+            ;
         }
     }
 }

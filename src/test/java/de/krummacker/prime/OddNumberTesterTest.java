@@ -1,21 +1,21 @@
 package de.krummacker.prime;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
-class OddNumberTesterTest {
+public class OddNumberTesterTest {
 
     private OddNumberTester oddNumberTester;
 
-    @BeforeEach
-    void setUp() throws Exception {
+    @BeforeMethod
+    public void setUp() throws Exception {
         oddNumberTester = new OddNumberTester();
     }
 
-    @AfterEach
-    void tearDown() throws Exception {
+    @AfterMethod
+    public void tearDown() throws Exception {
         oddNumberTester = null;
     }
 
@@ -23,47 +23,47 @@ class OddNumberTesterTest {
      * Make sure that -1 is considered odd.
      */
     @Test
-    void testMinusOneOdd() throws Exception {
-        Assertions.assertTrue(oddNumberTester.isOdd(-1));
+    public void testMinusOneOdd() throws Exception {
+        Assert.assertTrue(oddNumberTester.isOdd(-1));
     }
 
     /**
      * Make sure that 0 is considered even.
      */
     @Test
-    void testZeroNotOdd() throws Exception {
-        Assertions.assertFalse(oddNumberTester.isOdd(0));
+    public void testZeroNotOdd() throws Exception {
+        Assert.assertFalse(oddNumberTester.isOdd(0));
     }
 
     /**
      * Make sure that 1 is considered odd.
      */
     @Test
-    void testOneOdd() throws Exception {
-        Assertions.assertTrue(oddNumberTester.isOdd(1));
+    public void testOneOdd() throws Exception {
+        Assert.assertTrue(oddNumberTester.isOdd(1));
     }
 
     /**
      * Make sure that 2 is considered even.
      */
     @Test
-    void testTwoNotOdd() throws Exception {
-        Assertions.assertFalse(oddNumberTester.isOdd(2));
+    public void testTwoNotOdd() throws Exception {
+        Assert.assertFalse(oddNumberTester.isOdd(2));
     }
 
     /**
      * Make sure that Integer.MAX_VALUE is considered odd.
      */
     @Test
-    void testIntegerMAX_VALUEPrime() throws Exception {
-        Assertions.assertTrue(oddNumberTester.isOdd(Integer.MAX_VALUE));
+    public void testIntegerMAX_VALUEPrime() throws Exception {
+        Assert.assertTrue(oddNumberTester.isOdd(Integer.MAX_VALUE));
     }
 
     /**
      * Make sure that Integer.MIN_VALUE is considered odd.
      */
     @Test
-    void testIntegerMIN_VALUENotOdd() throws Exception {
-        Assertions.assertFalse(oddNumberTester.isOdd(Integer.MIN_VALUE));
+    public void testIntegerMIN_VALUENotOdd() throws Exception {
+        Assert.assertFalse(oddNumberTester.isOdd(Integer.MIN_VALUE));
     }
 }

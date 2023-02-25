@@ -1,15 +1,15 @@
 package de.krummacker.collections;
 
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.util.*;
+
 
 /**
  * Tests the Bag class.
  */
-class BagTest {
+public class BagTest {
 
     /**
      * Make sure that we can add strings and that they are there.
@@ -18,14 +18,14 @@ class BagTest {
     void testAddStringsAndTestContains() {
 
         Bag<String> bag = new Bag<>();
-        Assertions.assertTrue(bag.isEmpty());
-        Assertions.assertEquals(bag.size(), 0);
+        Assert.assertTrue(bag.isEmpty());
+        Assert.assertEquals(bag.size(), 0);
 
         String example = "kobylamamalybok";
         bag.add(example);
-        Assertions.assertFalse(bag.isEmpty());
-        Assertions.assertEquals(bag.size(), 1);
-        Assertions.assertTrue(bag.contains(example));
+        Assert.assertFalse(bag.isEmpty());
+        Assert.assertEquals(bag.size(), 1);
+        Assert.assertTrue(bag.contains(example));
     }
 
     /**
@@ -39,9 +39,9 @@ class BagTest {
         bag.add(example);
         bag.add(example);
 
-        Assertions.assertFalse(bag.isEmpty());
-        Assertions.assertEquals(bag.size(), 2);
-        Assertions.assertTrue(bag.contains(example));
+        Assert.assertFalse(bag.isEmpty());
+        Assert.assertEquals(bag.size(), 2);
+        Assert.assertTrue(bag.contains(example));
     }
 
     /**
@@ -56,7 +56,7 @@ class BagTest {
         bag.add(3);
 
         for (Integer i : bag) {
-            Assertions.assertNotNull(i);
+            Assert.assertNotNull(i);
         }
     }
 
@@ -75,13 +75,13 @@ class BagTest {
         Bag<String> bag = new Bag<>();
         bag.addAll(source);
         Iterator<String> iterator = bag.iterator();
-        Assertions.assertNotNull(iterator);
+        Assert.assertNotNull(iterator);
 
         while (iterator.hasNext()) {
             String n = iterator.next();
-            Assertions.assertTrue(source.contains(n));
+            Assert.assertTrue(source.contains(n));
         }
-        Assertions.assertFalse(iterator.hasNext());
+        Assert.assertFalse(iterator.hasNext());
     }
 
     /**
@@ -95,13 +95,13 @@ class BagTest {
         bag.add("two");
         bag.add("two");
         bag.add("three");
-        Assertions.assertEquals(bag.size(), 4);
+        Assert.assertEquals(bag.size(), 4);
 
         Iterator<String> iterator = bag.iterator();
-        Assertions.assertNotNull(iterator.next());
-        Assertions.assertNotNull(iterator.next());
+        Assert.assertNotNull(iterator.next());
+        Assert.assertNotNull(iterator.next());
         iterator.remove();
-        Assertions.assertEquals(bag.size(), 3);
+        Assert.assertEquals(bag.size(), 3);
     }
 
     /**
@@ -114,13 +114,13 @@ class BagTest {
         bag.add("foo");
 
         Iterator<String> iterator = bag.iterator();
-        Assertions.assertNotNull(iterator);
-        Assertions.assertTrue(iterator.hasNext());
-        Assertions.assertNotNull(iterator.next());
-        Assertions.assertFalse(iterator.hasNext());
+        Assert.assertNotNull(iterator);
+        Assert.assertTrue(iterator.hasNext());
+        Assert.assertNotNull(iterator.next());
+        Assert.assertFalse(iterator.hasNext());
         try {
             iterator.next();
-            Assertions.fail("expected NoSuchElementException but was not thrown");
+            Assert.fail("expected NoSuchElementException but was not thrown");
         } catch (NoSuchElementException e) {
             // This is expected.
         }
@@ -137,13 +137,13 @@ class BagTest {
         bag.add("bar");
 
         Iterator<String> iterator = bag.iterator();
-        Assertions.assertNotNull(iterator.next());
+        Assert.assertNotNull(iterator.next());
 
         bag.add("baz");
 
         try {
             iterator.next();
-            Assertions.fail("expected ConcurrentModificationException but was not thrown");
+            Assert.fail("expected ConcurrentModificationException but was not thrown");
         } catch (ConcurrentModificationException e) {
             // This is expected.
         }

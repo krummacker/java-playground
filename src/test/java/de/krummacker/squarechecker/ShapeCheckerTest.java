@@ -1,9 +1,7 @@
 package de.krummacker.squarechecker;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class ShapeCheckerTest {
 
@@ -12,7 +10,7 @@ public class ShapeCheckerTest {
      */
     @Test
     public void testConstructorNull() {
-        assertThrows(IllegalArgumentException.class, () -> new ShapeChecker(null));
+        Assert.expectThrows(IllegalArgumentException.class, () -> new ShapeChecker(null));
     }
 
     /**
@@ -32,7 +30,7 @@ public class ShapeCheckerTest {
                 new Point(0, 2)
         };
 
-        assertThrows(IllegalArgumentException.class, () -> new ShapeChecker(corners));
+        Assert.expectThrows(IllegalArgumentException.class, () -> new ShapeChecker(corners));
     }
 
     /**
@@ -47,7 +45,7 @@ public class ShapeCheckerTest {
                 new Point(0, 20)
         };
 
-        assertThrows(IllegalArgumentException.class, () -> new ShapeChecker(corners));
+        Assert.expectThrows(IllegalArgumentException.class, () -> new ShapeChecker(corners));
     }
 
     /**
@@ -64,7 +62,7 @@ public class ShapeCheckerTest {
         };
 
         ShapeChecker checker = new ShapeChecker(corners);
-        Assertions.assertTrue(checker.isSquare());
+        Assert.assertTrue(checker.isSquare());
     }
 
     /**
@@ -81,7 +79,7 @@ public class ShapeCheckerTest {
         };
 
         ShapeChecker checker = new ShapeChecker(corners);
-        Assertions.assertTrue(checker.isSquare());
+        Assert.assertTrue(checker.isSquare());
     }
 
     /**
@@ -98,7 +96,7 @@ public class ShapeCheckerTest {
         };
 
         ShapeChecker checker = new ShapeChecker(corners);
-        Assertions.assertFalse(checker.isSquare());
+        Assert.assertFalse(checker.isSquare());
     }
 
     /**
@@ -115,7 +113,7 @@ public class ShapeCheckerTest {
         };
 
         ShapeChecker checker = new ShapeChecker(corners);
-        Assertions.assertFalse(checker.isSquare());
+        Assert.assertFalse(checker.isSquare());
     }
 
     /**
@@ -132,7 +130,7 @@ public class ShapeCheckerTest {
         };
 
         ShapeChecker checker = new ShapeChecker(corners);
-        Assertions.assertFalse(checker.isSquare());
+        Assert.assertFalse(checker.isSquare());
     }
 
     /**
@@ -149,7 +147,7 @@ public class ShapeCheckerTest {
         };
 
         ShapeChecker checker = new ShapeChecker(corners);
-        Assertions.assertFalse(checker.isSquare());
+        Assert.assertFalse(checker.isSquare());
     }
 
     /**
@@ -166,7 +164,7 @@ public class ShapeCheckerTest {
         };
 
         ShapeChecker checker = new ShapeChecker(corners);
-        Assertions.assertFalse(checker.isSquare());
+        Assert.assertFalse(checker.isSquare());
     }
 
     /**
@@ -183,7 +181,7 @@ public class ShapeCheckerTest {
         };
 
         ShapeChecker checker = new ShapeChecker(corners);
-        Assertions.assertTrue(checker.isRectangle());
+        Assert.assertTrue(checker.isRectangle());
     }
 
     /**
@@ -201,7 +199,7 @@ public class ShapeCheckerTest {
         };
 
         ShapeChecker checker = new ShapeChecker(corners);
-        Assertions.assertTrue(checker.isRectangle());
+        Assert.assertTrue(checker.isRectangle());
     }
 
     /**
@@ -218,7 +216,7 @@ public class ShapeCheckerTest {
         };
 
         ShapeChecker checker = new ShapeChecker(corners);
-        Assertions.assertFalse(checker.isRectangle());
+        Assert.assertFalse(checker.isRectangle());
     }
 
     /**
@@ -235,7 +233,7 @@ public class ShapeCheckerTest {
         };
 
         ShapeChecker checker = new ShapeChecker(corners);
-        Assertions.assertFalse(checker.isRectangle());
+        Assert.assertFalse(checker.isRectangle());
     }
 
     /**
@@ -252,7 +250,7 @@ public class ShapeCheckerTest {
         };
 
         ShapeChecker checker = new ShapeChecker(corners);
-        Assertions.assertFalse(checker.isRectangle());
+        Assert.assertFalse(checker.isRectangle());
     }
 
     /**
@@ -269,6 +267,6 @@ public class ShapeCheckerTest {
         };
 
         ShapeChecker checker = new ShapeChecker(corners);
-        Assertions.assertFalse(checker.isRectangle());
+        Assert.assertFalse(checker.isRectangle());
     }
 }

@@ -1,14 +1,14 @@
 package de.krummacker.processhandle;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.util.Optional;
 
 /**
  * Tests new Java 9 features around process handles.
  */
-class ProcessHandleTest {
+public class ProcessHandleTest {
 
     /**
      * Make sure that this process' pid is not the pid of init.
@@ -16,7 +16,7 @@ class ProcessHandleTest {
     @Test
     void testGetPid() {
         long pid = ProcessHandle.current().pid();
-        Assertions.assertNotEquals(pid, 1);
+        Assert.assertNotEquals(pid, 1);
     }
 
     /**
@@ -26,6 +26,6 @@ class ProcessHandleTest {
     void testInitAlive() {
         Optional<ProcessHandle> processHandle = ProcessHandle.of(1);
         boolean isAlive = processHandle.isPresent() && processHandle.get().isAlive();
-        Assertions.assertTrue(isAlive);
+        Assert.assertTrue(isAlive);
     }
 }

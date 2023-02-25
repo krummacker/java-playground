@@ -1,18 +1,17 @@
 package de.krummacker.exceptions;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-class RethrowExceptionsTypeCheckingTest {
+public class RethrowExceptionsTypeCheckingTest {
 
-    private static class FirstException extends Exception {
+    static class FirstException extends Exception {
     }
 
-    private static class SecondException extends Exception {
+    static class SecondException extends Exception {
     }
 
-    private void rethrowException(String exceptionName) throws FirstException, SecondException {
-        //noinspection CaughtExceptionImmediatelyRethrown
+    public void rethrowException(String exceptionName) throws FirstException, SecondException {
         try {
             if (exceptionName.equals("First")) {
                 throw new FirstException();
@@ -25,22 +24,12 @@ class RethrowExceptionsTypeCheckingTest {
     }
 
     @Test
-    void testRethrowExceptionsTypeCheckingTest() {
+    public void testRethrowExceptionsTypeCheckingTest() {
         try {
             rethrowException("First");
         } catch (Exception e) {
             return;
         }
-        Assertions.fail("not expected");
-    }
-
-    @Test
-    void testRethrowExceptionsTypeCheckingTestOtherValue() {
-        try {
-            rethrowException("Second");
-        } catch (Exception e) {
-            return;
-        }
-        Assertions.fail("not expected");
+        Assert.fail();
     }
 }
