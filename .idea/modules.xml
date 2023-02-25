@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/de.krummacker.hello/de.krummacker.hello.iml" filepath="$PROJECT_DIR$/de.krummacker.hello/de.krummacker.hello.iml" />
+      <module fileurl="file://$PROJECT_DIR$/de.krummacker.playground/de.krummacker.playground.iml" filepath="$PROJECT_DIR$/de.krummacker.playground/de.krummacker.playground.iml" />
+    </modules>
+  </component>
+</project>
