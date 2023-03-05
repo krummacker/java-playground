@@ -47,8 +47,7 @@ public class QueueRunner {
                             + "'. Current queue size: " + QUEUE.size());
                     element.process();
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                    e.printStackTrace();
+                    System.err.println(e);
                     System.exit(1);
                 }
             }
