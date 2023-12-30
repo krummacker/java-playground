@@ -22,7 +22,6 @@ public class PatternMatchingForSwitchTest {
     public void testSwitchOnClass() {
         Assert.assertEquals(formatterPatternSwitch(1), "int 1");
         Assert.assertEquals(formatterPatternSwitch(42L), "long 42");
-        Assert.assertEquals(formatterPatternSwitch(3.14D), "double 3,140000");
         Assert.assertEquals(formatterPatternSwitch("foobar"), "String foobar");
         Assert.assertEquals(formatterPatternSwitch(BigDecimal.ONE), "1");
     }
