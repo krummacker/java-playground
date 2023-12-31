@@ -12,3 +12,9 @@ jobs:
       - run: java --version
       - run: mvn --version
       - run: mvn test
+      # run OWASP dependency-check
+      - shell: bash
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+        run: |
+          mvn -DnvdApiKey=$NVD_API_KEY -DnvdValidForHours=0 -DnvdApiDelay=5000 verify
