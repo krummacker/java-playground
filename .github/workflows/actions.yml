@@ -9,11 +9,12 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-      - run: java --version
-      - run: mvn --version
-      - run: mvn test
-      # run OWASP dependency-check
-      - shell: bash
+          cache: 'maven'
+      - run: |
+          java --version
+          mvn --version
+          mvn test
+      - shell: bash # run OWASP dependency-check
         env:
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: |
