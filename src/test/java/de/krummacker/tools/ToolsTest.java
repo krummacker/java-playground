@@ -10,18 +10,18 @@ import java.util.List;
 public class ToolsTest {
 
     @BeforeMethod
-    public void setUp() throws Exception {
+    public void setUp() {
     }
 
     @AfterMethod
-    public void tearDown() throws Exception {
+    public void tearDown() {
     }
 
     /**
      * Make sure that the createRandomList() method returns a random list of the right length (happy case).
      */
     @Test
-    public void testCreateRandomList() throws Exception {
+    public void testCreateRandomList() {
         List<Integer> actual = Tools.createRandomList(10);
         Assert.assertEquals(actual.size(), 10);
     }
@@ -30,7 +30,7 @@ public class ToolsTest {
      * Make sure that the createRandomList() method returns still works if the argument is zero.
      */
     @Test
-    public void testCreateRandomListZero() throws Exception {
+    public void testCreateRandomListZero() {
         List<Integer> actual = Tools.createRandomList(0);
         Assert.assertEquals(actual.size(), 0);
     }
@@ -47,8 +47,8 @@ public class ToolsTest {
      * Make sure that the computeMedian() method works fine in the happy case.
      */
     @Test
-    public void testComputeMedianHappyCase() throws Exception {
-        Comparable actual = Tools.computeMedian(1, 2, 3);
+    public void testComputeMedianHappyCase() {
+        Comparable<Integer> actual = Tools.computeMedian(1, 2, 3);
         Assert.assertEquals(actual, 2);
     }
 
@@ -56,8 +56,8 @@ public class ToolsTest {
      * Make sure that the computeMedian() method works fine if two arguments are equal.
      */
     @Test
-    public void testComputeMedianTwoEqual() throws Exception {
-        Comparable actual = Tools.computeMedian(42, 17, 42);
+    public void testComputeMedianTwoEqual() {
+        Comparable<Integer> actual = Tools.computeMedian(42, 17, 42);
         Assert.assertEquals(actual, 42);
     }
 
@@ -65,8 +65,8 @@ public class ToolsTest {
      * Make sure that the computeMedian() method works fine if all arguments are equal.
      */
     @Test
-    public void testComputeMedianAllEqual() throws Exception {
-        Comparable actual = Tools.computeMedian(99, 99, 99);
+    public void testComputeMedianAllEqual() {
+        Comparable<Integer> actual = Tools.computeMedian(99, 99, 99);
         Assert.assertEquals(actual, 99);
     }
 
@@ -82,6 +82,7 @@ public class ToolsTest {
      * Make sure that the computeMedian() method fails if all parameters are null.
      */
     @Test(expectedExceptions = NullPointerException.class)
+    @SuppressWarnings("all")
     public void testComputeMedianNullAll() {
         Tools.computeMedian(null, null, null);
     }

@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 public class DayTypeChecker {
 
+    @SuppressWarnings("all")
     public static boolean isWeekDayOldStyle(int day) throws IllegalArgumentException {
         switch (day) {
             case Calendar.MONDAY:

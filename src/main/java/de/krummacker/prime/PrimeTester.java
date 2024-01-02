@@ -26,14 +26,14 @@ public class PrimeTester {
         }
 
         // it is sufficient to check until half of n
-        for (int i = 2; i < n/2 + 1; ++i) {
+        for (int i = 2; i < n / 2 + 1; ++i) {
             if (n % i == 0) {
                 // no remainder means that this is not a prime
                 return false;
             }
         }
 
-        // the if above was never true, hence this must be a prime
+        // then if above was never true, hence this must be a prime
         return true;
     }
 }

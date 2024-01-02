@@ -12,7 +12,7 @@ public class HashMapCacheTest {
     /**
      * Dummy implementation so that we can test the HashMapCache class.
      */
-    private final static Cache<Serializable> UNDERLYING_CACHE = new Cache<Serializable>() {
+    private final static Cache<Serializable> UNDERLYING_CACHE = new Cache<>() {
 
         @Override
         public Serializable get(Serializable key) {
@@ -28,12 +28,12 @@ public class HashMapCacheTest {
     private Cache<Serializable> cache;
 
     @BeforeMethod
-    public void setUp() throws Exception {
+    public void setUp() {
         cache = new HashMapCache<>(UNDERLYING_CACHE);
     }
 
     @AfterMethod
-    public void tearDown() throws Exception {
+    public void tearDown() {
         cache = null;
     }
 
@@ -41,8 +41,10 @@ public class HashMapCacheTest {
      * Make sure that a second get returns then same object as the first get has returned before.
      */
     @Test
-    public void testGet() throws Exception {
+    public void testGet() {
+        @SuppressWarnings("all")
         String first = new String("id");
+        @SuppressWarnings("all")
         String second = new String("id");
         Serializable firstResult = cache.get(first);
         Serializable secondResult = cache.get(second);
@@ -53,8 +55,10 @@ public class HashMapCacheTest {
      * Make sure that a cached object is forgotten after invalidate.
      */
     @Test
-    public void testInvalidateGet() throws Exception {
+    public void testInvalidateGet() {
+        @SuppressWarnings("all")
         String first = new String("id");
+        @SuppressWarnings("all")
         String second = new String("id");
         Assert.assertNotSame(first, second);
         Serializable firstResult = cache.get(first);

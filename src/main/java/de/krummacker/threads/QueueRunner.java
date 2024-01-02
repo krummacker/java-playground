@@ -6,7 +6,7 @@ public class QueueRunner {
 
     private static class QueueProducer implements Runnable {
 
-        private String name;
+        private final String name;
 
         public QueueProducer(String name) {
             this.name = name;
@@ -31,7 +31,7 @@ public class QueueRunner {
 
     private static class QueueConsumer implements Runnable {
 
-        private String name;
+        private final String name;
 
         public QueueConsumer(String name) {
             this.name = name;

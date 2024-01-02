@@ -9,6 +9,7 @@ public class ShapeCheckerTest {
      * Make sure that null is recognized.
      */
     @Test
+    @SuppressWarnings("all")
     public void testConstructorNull() {
         Assert.expectThrows(IllegalArgumentException.class, () -> new ShapeChecker(null));
     }

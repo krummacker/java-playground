@@ -14,6 +14,7 @@ public class LinkedListQueue {
         return internal.size();
     }
 
+    @SuppressWarnings("all")
     public QueueElement take() throws InterruptedException {
 
         // Poor man's assurance that we have something to take

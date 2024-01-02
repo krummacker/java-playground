@@ -10,12 +10,12 @@ public class OddNumberTesterTest {
     private OddNumberTester oddNumberTester;
 
     @BeforeMethod
-    public void setUp() throws Exception {
+    public void setUp() {
         oddNumberTester = new OddNumberTester();
     }
 
     @AfterMethod
-    public void tearDown() throws Exception {
+    public void tearDown() {
         oddNumberTester = null;
     }
 
@@ -23,7 +23,7 @@ public class OddNumberTesterTest {
      * Make sure that -1 is considered odd.
      */
     @Test
-    public void testMinusOneOdd() throws Exception {
+    public void testMinusOneOdd() {
         Assert.assertTrue(oddNumberTester.isOdd(-1));
     }
 
@@ -31,7 +31,7 @@ public class OddNumberTesterTest {
      * Make sure that 0 is considered even.
      */
     @Test
-    public void testZeroNotOdd() throws Exception {
+    public void testZeroNotOdd() {
         Assert.assertFalse(oddNumberTester.isOdd(0));
     }
 
@@ -39,7 +39,7 @@ public class OddNumberTesterTest {
      * Make sure that 1 is considered odd.
      */
     @Test
-    public void testOneOdd() throws Exception {
+    public void testOneOdd() {
         Assert.assertTrue(oddNumberTester.isOdd(1));
     }
 
@@ -47,7 +47,7 @@ public class OddNumberTesterTest {
      * Make sure that 2 is considered even.
      */
     @Test
-    public void testTwoNotOdd() throws Exception {
+    public void testTwoNotOdd() {
         Assert.assertFalse(oddNumberTester.isOdd(2));
     }
 
@@ -55,7 +55,7 @@ public class OddNumberTesterTest {
      * Make sure that Integer.MAX_VALUE is considered odd.
      */
     @Test
-    public void testIntegerMAX_VALUEPrime() throws Exception {
+    public void testIntegerMAX_VALUEPrime() {
         Assert.assertTrue(oddNumberTester.isOdd(Integer.MAX_VALUE));
     }
 
@@ -63,7 +63,7 @@ public class OddNumberTesterTest {
      * Make sure that Integer.MIN_VALUE is considered odd.
      */
     @Test
-    public void testIntegerMIN_VALUENotOdd() throws Exception {
+    public void testIntegerMIN_VALUENotOdd() {
         Assert.assertFalse(oddNumberTester.isOdd(Integer.MIN_VALUE));
     }
 }

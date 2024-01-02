@@ -11,11 +11,11 @@ import java.util.Set;
 public class SetTest {
 
     /**
-     * Create a set out of one method call.
+     * Create a set with multiple elements with one method call.
      */
     @Test
     void testCreateSet() {
-        Set set = Set.of(1, 2, 3);
+        var set = Set.of(1, 2, 3);
         Assert.assertTrue(set.contains(1));
         Assert.assertTrue(set.contains(2));
         Assert.assertTrue(set.contains(3));

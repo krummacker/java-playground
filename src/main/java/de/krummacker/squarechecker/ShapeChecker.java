@@ -7,21 +7,13 @@ import java.util.*;
  */
 public class ShapeChecker {
 
-    private Point start;
-    private List<Point> others;
+    private final Point start;
+    private final List<Point> others;
 
     /**
      * Allows sorting by the distance without losing the Point that the distance refers to.
      */
-    private static class DistanceAndPoint implements Comparable<DistanceAndPoint> {
-
-        private int distance;
-        private Point point;
-
-        public DistanceAndPoint(int distance, Point point) {
-            this.distance = distance;
-            this.point = point;
-        }
+    private record DistanceAndPoint(int distance, Point point) implements Comparable<DistanceAndPoint> {
 
         @Override
         public int compareTo(DistanceAndPoint o) {
@@ -103,16 +95,7 @@ public class ShapeChecker {
 
         // If the following is true then this is possibly a rectangle.
         if (a + b == c) {
-
-            // But the most distant point can still be on the other side.
-            Point mostDistant = distances.get(2).point;
-
-            // Calculate distances between most distant and closer points.
-            // If this is a square then the second element will overwrite the first,
-            // but that does not matter.
-            Set<Integer> otherDistances = new HashSet<>();
-            otherDistances.add(mostDistant.distanceSquared(distances.get(0).point));
-            otherDistances.add(mostDistant.distanceSquared(distances.get(1).point));
+            Set<Integer> otherDistances = computeOtherDistances(distances);
 
             // If both elements equal a and b then this is a rectangle.
             // If one or both are different then it is not.
@@ -124,5 +107,19 @@ public class ShapeChecker {
         } else {
             return false;
         }
+    }
+
+    private static Set<Integer> computeOtherDistances(List<DistanceAndPoint> distances) {
+
+        // The most distant point can still be on the other side.
+        Point mostDistant = distances.get(2).point;
+
+        // Calculate distances between most distant and closer points.
+        // If this is a square then the second element will overwrite the first,
+        // but that does not matter.
+        Set<Integer> otherDistances = new HashSet<>();
+        otherDistances.add(mostDistant.distanceSquared(distances.get(0).point));
+        otherDistances.add(mostDistant.distanceSquared(distances.get(1).point));
+        return otherDistances;
     }
 }

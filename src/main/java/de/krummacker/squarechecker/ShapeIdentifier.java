@@ -1,6 +1,6 @@
 package de.krummacker.squarechecker;
 
-import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * Reads 4 Points and determines which type of shape they form.
@@ -16,7 +16,7 @@ public class ShapeIdentifier {
     //   be the same as the distances between the most distant one and the other 2
     // - the resulting shape is a parallelogram
     // - if the distance of the most distant to the first point fulfils the
-    //   Pythagorean theorem with respect to the the other distances then this is
+    //   Pythagorean theorem with respect to the other distances then this is
     //   a rectangle
     // - and if the other two distances are equal then this is a square
 
@@ -38,7 +38,7 @@ public class ShapeIdentifier {
         }
 
         // Are all elements equal? Or are there only 2 distinct points?
-        switch ((int) List.of(a, b, c, d).stream().distinct().count()) {
+        switch ((int) Stream.of(a, b, c, d).distinct().count()) {
             case 1:
                 return ShapeType.POINT;
             case 2:
@@ -48,10 +48,9 @@ public class ShapeIdentifier {
         }
 
         // Pick a start point and determine the opposite.
-        Point start = a;
-        int distanceB = start.distanceSquared(b);
-        int distanceC = start.distanceSquared(c);
-        int distanceD = start.distanceSquared(d);
+        int distanceB = a.distanceSquared(b);
+        int distanceC = a.distanceSquared(c);
+        int distanceD = a.distanceSquared(d);
         Point opposite;
         Point between1;
         Point between2;
@@ -69,17 +68,16 @@ public class ShapeIdentifier {
             between2 = c;
         }
 
-        int distanceStart1 = start.distanceSquared(between1);
-        int distanceStart2 = start.distanceSquared(between2);
-        int distanceStartOpposite = start.distanceSquared(opposite);
+        int distanceStart1 = a.distanceSquared(between1);
+        int distanceStart2 = a.distanceSquared(between2);
+        int distanceStartOpposite = a.distanceSquared(opposite);
         int distanceOpposite1 = opposite.distanceSquared(between1);
         int distanceOpposite2 = opposite.distanceSquared(between2);
         boolean isRectangleOrSquare = (distanceStartOpposite == distanceStart1 + distanceStart2)
                 && (distanceStartOpposite == distanceOpposite1 + distanceOpposite2);
 
         if (isRectangleOrSquare) {
-            long distinctDistances = List.of(distanceStart1, distanceStart2, distanceOpposite1, distanceOpposite2)
-                    .stream()
+            long distinctDistances = Stream.of(distanceStart1, distanceStart2, distanceOpposite1, distanceOpposite2)
                     .distinct()
                     .count();
         }

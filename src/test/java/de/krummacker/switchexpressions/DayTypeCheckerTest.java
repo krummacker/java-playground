@@ -18,6 +18,7 @@ public class DayTypeCheckerTest {
         Assert.assertTrue(DayTypeChecker.isWeekDayNewStyle(Calendar.MONDAY));
         Assert.assertFalse(DayTypeChecker.isWeekDayNewStyle(Calendar.SUNDAY));
     }
+
     @Test
     public void testIsWeekDayNewStyleYield() {
         Assert.assertTrue(DayTypeChecker.isWeekDayNewStyleYield(Calendar.MONDAY));

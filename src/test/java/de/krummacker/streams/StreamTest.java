@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 public class StreamTest {
 
     @Test
-    public void testIterateAndLimit() throws Exception {
+    public void testIterateAndLimit() {
         Stream<Integer> stream = Stream.iterate(0, n -> n + 1)
                 .limit(10);
         List<Integer> produced = stream.collect(Collectors.toList());
@@ -23,7 +23,7 @@ public class StreamTest {
     }
 
     @Test
-    public void testSkip() throws Exception {
+    public void testSkip() {
         Stream<Integer> stream = Stream.iterate(0, n -> n + 1)
                 .limit(10)
                 .skip(5);
@@ -33,7 +33,7 @@ public class StreamTest {
     }
 
     @Test
-    public void testMap() throws Exception {
+    public void testMap() {
         Stream<Integer> stream = Stream.iterate(0, n -> n + 1)
                 .limit(10)
                 .map(n -> n * 2);

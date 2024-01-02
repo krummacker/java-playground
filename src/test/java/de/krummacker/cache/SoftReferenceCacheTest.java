@@ -12,7 +12,7 @@ public class SoftReferenceCacheTest {
     /**
      * Dummy implementation so that we can test the HashMapCache class.
      */
-    private final static Cache<String> UNDERLYING_CACHE = new Cache<String>() {
+    private final static Cache<String> UNDERLYING_CACHE = new Cache<>() {
 
         @Override
         public String get(Serializable key) {
@@ -34,12 +34,12 @@ public class SoftReferenceCacheTest {
     private SoftReferenceCache<String> cache;
 
     @BeforeMethod
-    public void setUp() throws Exception {
+    public void setUp() {
         cache = new SoftReferenceCache<>(UNDERLYING_CACHE);
     }
 
     @AfterMethod
-    public void tearDown() throws Exception {
+    public void tearDown() {
         cache = null;
     }
 
@@ -47,10 +47,12 @@ public class SoftReferenceCacheTest {
      * Make sure that a second get returns then same object as the first get has returned before.
      */
     @Test
-    public void testGet() throws Exception {
+    public void testGet() {
 
         // Intentionally creating different String instances
+        @SuppressWarnings("all")
         String first = new String("id");
+        @SuppressWarnings("all")
         String second = new String("id");
 
         String firstResult = cache.get(first);
@@ -64,10 +66,12 @@ public class SoftReferenceCacheTest {
      * Make sure that a cached object is forgotten after invalidate.
      */
     @Test
-    public void testInvalidateGet() throws Exception {
+    public void testInvalidateGet() {
 
         // Intentionally creating different String instances
+        @SuppressWarnings("all")
         String first = new String("id");
+        @SuppressWarnings("all")
         String second = new String("id");
 
         // Intentionally comparing identity, not equality

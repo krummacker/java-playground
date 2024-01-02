@@ -9,7 +9,7 @@ public class DummyCommandLineToolTest {
      * Make sure that the help text contains usage instructions.
      */
     @Test
-    public void testHelp() throws Exception {
+    public void testHelp() {
         String[] args = {"--help"};
         String output = DummyCommandLineTool.determineOutput(args);
         Assert.assertTrue(output.startsWith("usage"));
@@ -19,7 +19,7 @@ public class DummyCommandLineToolTest {
      * Make sure that the target value is rendered correctly.
      */
     @Test
-    public void testOnlyTarget() throws Exception {
+    public void testOnlyTarget() {
         String[] args = {"--target", "foobar"};
         String expected = "Verbose: false\nTarget: foobar\n";
         String output = DummyCommandLineTool.determineOutput(args);
@@ -30,7 +30,7 @@ public class DummyCommandLineToolTest {
      * Make sure that both target value and verbose are rendered correctly.
      */
     @Test
-    public void testTargetAndVerbose() throws Exception {
+    public void testTargetAndVerbose() {
         String[] args = {"--target", "foobar", "--verbose"};
         String expected = "Verbose: true\nTarget: foobar\n";
         String output = DummyCommandLineTool.determineOutput(args);
@@ -41,7 +41,7 @@ public class DummyCommandLineToolTest {
      * Make sure that short options work too.
      */
     @Test
-    public void testShortOptions() throws Exception {
+    public void testShortOptions() {
         String[] args = {"-t", "foobar", "-v"};
         String expected = "Verbose: true\nTarget: foobar\n";
         String output = DummyCommandLineTool.determineOutput(args);
@@ -52,7 +52,7 @@ public class DummyCommandLineToolTest {
      * Make sure illegal arguments cause an error.
      */
     @Test
-    public void testIllegalArguments() throws Exception {
+    public void testIllegalArguments() {
         String[] args = {"-x", "y", "-z"};
         String expected = "Unrecognized option: -x\n";
         String output = DummyCommandLineTool.determineOutput(args);

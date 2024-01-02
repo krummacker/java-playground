@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 public class TextBlocksTest {
     @Test
     public void testGetMultilineTextBlock() {
+        @SuppressWarnings("all")
         String expected = "This is a text block.\n" +
                 "It has multiple lines.\n" +
                 "They work like HERE documents.\n" +

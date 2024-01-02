@@ -12,12 +12,12 @@ public class EntityRetrieverTest {
     private EntityRetriever entityRetriever;
 
     @BeforeMethod
-    public void setUp() throws Exception {
+    public void setUp() {
         entityRetriever = new EntityRetriever();
     }
 
     @AfterMethod
-    public void tearDown() throws Exception {
+    public void tearDown() {
         entityRetriever = null;
     }
 

@@ -10,9 +10,9 @@ public class ResourceTest {
         try {
             resource = new Resource();
             resource.someAction();
-        } catch (Exception e) {
-            ;
+        } catch (Exception ignored) {
         } finally {
+            assert resource != null;
             resource.close();
         }
     }
@@ -21,8 +21,7 @@ public class ResourceTest {
     public void testNewStyle() {
         try (Resource resource = new Resource()) {
             resource.someAction();
-        } catch (Exception e) {
-            ;
+        } catch (Exception ignored) {
         }
     }
 }

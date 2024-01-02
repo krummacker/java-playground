@@ -4,7 +4,7 @@ public class QueueElement {
 
     private static int counter = 0;
 
-    private Integer number;
+    private final Integer number;
     private boolean processed = false;
 
     private QueueElement(Integer number) {

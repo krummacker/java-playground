@@ -39,13 +39,13 @@ public class TimeoutCacheTest {
     private Cache<Serializable> timeoutCache;
 
     @BeforeMethod
-    public void setUp() throws Exception {
+    public void setUp() {
         mockCache = new MockCache();
         timeoutCache = new TimeoutCache<>(mockCache, TIMEOUT_IN_MILLIS);
     }
 
     @AfterMethod
-    public void tearDown() throws Exception {
+    public void tearDown() {
         mockCache = null;
         timeoutCache = null;
     }

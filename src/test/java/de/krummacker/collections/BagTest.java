@@ -15,6 +15,7 @@ public class BagTest {
      * Make sure that we can add strings and that they are there.
      */
     @Test
+    @SuppressWarnings("all")
     void testAddStringsAndTestContains() {
 
         Bag<String> bag = new Bag<>();
@@ -64,6 +65,7 @@ public class BagTest {
      * Make sure that we can use an iterator of a Bag.
      */
     @Test
+    @SuppressWarnings("all")
     void testIteratorHappyCase() {
 
         List<String> source = new ArrayList<>(4);
