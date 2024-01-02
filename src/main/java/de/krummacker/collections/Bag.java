@@ -9,6 +9,15 @@ import java.util.NoSuchElementException;
  * A Bag is a collection which, just like a list, can contain equal elements at
  * the same time, but does not, similar to a set, impose an order on the
  * contained elements.
+ * {@snippet :
+ * var bag = new Bag<String>();
+ * bag.add("foo");
+ * bag.add("bar");
+ * bag.add("baz");
+ * bag.add("baz");
+ * System.out.println(bag); // prints 4
+ *}
+ * }
  *
  * @param <E> the type of the contained elements
  */
