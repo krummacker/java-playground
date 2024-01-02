@@ -14,9 +14,9 @@ public class TimeoutCacheTest {
     /**
      * A mock Cache that the TimeoutCache can wrap, and that also allows checking what was invalidated.
      */
-    private final class MockCache implements Cache<Serializable> {
+    private static final class MockCache implements Cache<Serializable> {
 
-        private Set<Serializable> invalidatedKeys = new HashSet<>();
+        private final Set<Serializable> invalidatedKeys = new HashSet<>();
 
         @Override
         public Serializable get(Serializable key) {

@@ -14,7 +14,7 @@ public class SoftReferenceCache<T> implements Cache<T> {
     private final Cache<T> wrapped;
 
     /**
-     * Creates a new SoftReferenceCache that wraps the specified Cache. This Cache implementation works like the
+     * Creates a new SoftReferenceCache that wraps the specified Cache. This Cache implementation behaves like the
      * HashMapCache but uses SoftReferences underneath, causing the values to be automatically removed if the system
      * memory goes low.
      *

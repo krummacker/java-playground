@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 /**
  * A class implementing the Cache interface returns values that are identified by keys. While doing so, implementations
- * are encouraged to follow the Decorator pattern for adding functionality, e.g. the MongoDBCache retrieves values
+ * are encouraged to follow the Decorator pattern for adding functionality, e.g. a MongoDBCache retrieves values
  * from a MongoDB database, the {@link HashMapCache} wraps a MongoDBCache and stores retrieved values also in memory,
  * and the {@link TimeoutCache} invalidates values after a certain time has passed after their last retrieval.
  * <p>
- * Keys are {@link Serializable} so that they can be sent across the network to a JMS server.
+ * Keys must be {@link Serializable} so that they can be sent across the network to a JMS server.
  */
 public interface Cache<T> {
 

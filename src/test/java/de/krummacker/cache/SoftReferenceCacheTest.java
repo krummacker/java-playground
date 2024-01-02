@@ -50,15 +50,14 @@ public class SoftReferenceCacheTest {
     public void testGet() throws Exception {
 
         // Intentionally creating different String instances
-        @SuppressWarnings("RedundantStringConstructorCall") String first = new String("id");
-        @SuppressWarnings("RedundantStringConstructorCall") String second = new String("id");
+        String first = new String("id");
+        String second = new String("id");
 
         String firstResult = cache.get(first);
         String secondResult = cache.get(second);
 
         // Intentionally comparing identity, not equality
-        //noinspection StringEquality
-        Assert.assertTrue(firstResult == secondResult);
+        Assert.assertSame(firstResult, secondResult);
     }
 
     /**
@@ -68,19 +67,17 @@ public class SoftReferenceCacheTest {
     public void testInvalidateGet() throws Exception {
 
         // Intentionally creating different String instances
-        @SuppressWarnings("RedundantStringConstructorCall") String first = new String("id");
-        @SuppressWarnings("RedundantStringConstructorCall") String second = new String("id");
+        String first = new String("id");
+        String second = new String("id");
 
         // Intentionally comparing identity, not equality
-        //noinspection StringEquality
-        Assert.assertTrue(first != second);
+        Assert.assertNotSame(first, second);
 
         String firstResult = cache.get(first);
         cache.invalidate(first);
         String secondResult = cache.get(second);
 
         // Intentionally comparing identity, not equality
-        //noinspection StringEquality
-        Assert.assertTrue(firstResult != secondResult);
+        Assert.assertNotSame(firstResult, secondResult);
     }
 }

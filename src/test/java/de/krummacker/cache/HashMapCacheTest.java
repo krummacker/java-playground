@@ -46,7 +46,7 @@ public class HashMapCacheTest {
         String second = new String("id");
         Serializable firstResult = cache.get(first);
         Serializable secondResult = cache.get(second);
-        Assert.assertTrue(firstResult == secondResult);
+        Assert.assertSame(firstResult, secondResult);
     }
 
     /**
@@ -56,10 +56,10 @@ public class HashMapCacheTest {
     public void testInvalidateGet() throws Exception {
         String first = new String("id");
         String second = new String("id");
-        Assert.assertTrue(first != second);
+        Assert.assertNotSame(first, second);
         Serializable firstResult = cache.get(first);
         cache.invalidate(first);
         Serializable secondResult = cache.get(second);
-        Assert.assertTrue(firstResult != secondResult);
+        Assert.assertNotSame(firstResult, secondResult);
     }
 }

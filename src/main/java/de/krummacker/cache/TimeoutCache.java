@@ -16,15 +16,7 @@ public class TimeoutCache<T> implements Cache<T> {
     /**
      * We store the timestamp for each requested key, as well as the key itself.
      */
-    private static class TimeKeyEntry {
-
-        final long timestamp;
-        final Serializable key;
-
-        TimeKeyEntry(long timestamp, Serializable key) {
-            this.timestamp = timestamp;
-            this.key = key;
-        }
+    private record TimeKeyEntry(long timestamp, Serializable key) {
     }
 
     /**
