@@ -23,7 +23,7 @@ import java.util.NoSuchElementException;
  */
 public class Bag<E> extends AbstractCollection<E> {
 
-    private E[] contents = (E[]) new Object[0];
+    private Object[] contents = new Object[0];
 
     private int modCount = 0;
 
@@ -36,7 +36,7 @@ public class Bag<E> extends AbstractCollection<E> {
      */
     @Override
     public boolean add(E o) {
-        E[] tmp = (E[]) new Object[contents.length + 1];
+        Object[] tmp = new Object[contents.length + 1];
         System.arraycopy(contents, 0, tmp, 0, contents.length);
         tmp[contents.length] = o;
         contents = tmp;
@@ -74,7 +74,8 @@ public class Bag<E> extends AbstractCollection<E> {
             }
 
             removeAlreadyCalled = false;
-            E result = contents[index];
+            @SuppressWarnings("unchecked")
+            E result = (E) contents[index];
             ++index;
             return result;
         }
@@ -90,7 +91,7 @@ public class Bag<E> extends AbstractCollection<E> {
                 throw new IllegalStateException();
             }
 
-            E[] tmp = (E[]) new Object[contents.length - 1];
+            Object[] tmp = new Object[contents.length - 1];
             System.arraycopy(contents, 0, tmp, 0, index - 1);
             System.arraycopy(contents, index, tmp, index - 1, contents.length
                     - index);
