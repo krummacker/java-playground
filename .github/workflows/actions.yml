@@ -58,7 +58,7 @@ jobs:
             </servers>
           </settings>
           EOF
-          mvn -DnvdApiKey=${{ secrets.NVD_API_KEY }} -DnvdValidForHours=0 -DnvdApiDelay=5000 org.owasp:dependency-check-maven:check
+          mvn -DnvdApiKey=${{ secrets.NVD_API_KEY }} org.owasp:dependency-check-maven:check
       - name: Archive dependency check results
         if: always()
         uses: actions/upload-artifact@v6
