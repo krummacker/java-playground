@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JsonSchemaMappingsProjectConfiguration">
+    <state>
+      <map>
+        <entry key="bitbucket-pipelines">
+          <value>
+            <SchemaInfo>
+              <option name="name" value="bitbucket-pipelines" />
+              <option name="relativePathToSchema" value="https://api.bitbucket.org/schemas/pipelines-configuration" />
+              <option name="applicationDefined" value="true" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="path" value="bitbucket-pipelines.yml" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
+      </map>
+    </state>
+  </component>
+</project>
